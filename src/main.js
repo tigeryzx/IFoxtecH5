@@ -7,6 +7,7 @@ import store from './store'
 import App from './App'
 import Login from './page/Login'
 import Home from './page/Home'
+import Account from './page/Account'
 import * as types from './store/types'
 
 Vue.use(VueRouter)
@@ -19,6 +20,11 @@ const routes = [{
   path:'/home',
   name: 'home',
   component:Home
+},
+{
+  path:'/account',
+  name: 'account',
+  component:Account
 }]
 
 const router = new VueRouter({

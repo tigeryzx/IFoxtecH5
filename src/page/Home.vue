@@ -23,37 +23,19 @@
             </grid-item>
         </grid>
 
-        <tabbar>
-            <tabbar-item>
-                <x-icon slot="icon" type="ios-plus-outline" size="30"></x-icon>
-                <span slot="label">Wechat</span>
-            </tabbar-item>
-            <tabbar-item show-dot>
-                <x-icon slot="icon" type="ios-plus-outline" size="30"></x-icon>
-                <span slot="label">Message</span>
-            </tabbar-item>
-            <tabbar-item selected link="/component/demo">
-                <x-icon slot="icon" type="ios-plus-outline" size="30"></x-icon>
-                <span slot="label">Explore</span>
-            </tabbar-item>
-            <tabbar-item badge="2">
-                <x-icon slot="icon" type="ios-star" size="30"></x-icon>
-                <span slot="label">News</span>
-            </tabbar-item>
-        </tabbar>
+        <main-tabbar></main-tabbar>
     </div>
 </template>
 <script>
-    import { Grid, GridItem, GroupTitle, Icon, XHeader, Tabbar, TabbarItem } from 'vux'
+    import { Grid, GridItem, GroupTitle, XHeader } from 'vux'
+    import MainTabbar from '../components/MainTabbar'
     export default {
         components: {
             Grid,
             GridItem,
             GroupTitle,
-            Icon,
             XHeader,
-            Tabbar,
-            TabbarItem
+            MainTabbar
         }
     }
 </script>
