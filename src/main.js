@@ -5,14 +5,20 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import store from './store'
 import App from './App'
-import Home from './components/HelloFromVux'
+import Login from './page/Login'
+import Home from './page/Home'
 import * as types from './store/types'
 
 Vue.use(VueRouter)
 
 const routes = [{
   path: '/',
-  component: Home
+  namge:'login',
+  component: Login
+},{
+  path:'/home',
+  name: 'home',
+  component:Home
 }]
 
 const router = new VueRouter({
