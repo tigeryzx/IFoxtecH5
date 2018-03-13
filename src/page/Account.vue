@@ -1,6 +1,5 @@
 <template>
     <div>
-        <x-header :left-options="{showBack: false}">我</x-header>
         <group>
             <cell title="黄小明" inline-desc="账号名：hxm"></cell>
         </group>
@@ -17,8 +16,12 @@
                 <x-icon style="display:block;margin-right:5px;fill:yellow;" slot="icon" type="ios-star" size="20"></x-icon>
             </cell>
         </group>
+        <group>
+            <cell title="退出登录" link="/">
+                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="ios-heart" size="20"></x-icon>
+            </cell>
+        </group>
         <main-tabbar>
-
         </main-tabbar>
     </div>
 </template>

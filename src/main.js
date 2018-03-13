@@ -20,20 +20,32 @@ Vue.use(ToastPlugin, { position: 'bottom' })
 const routes = [{
   path: '/',
   namge: 'login',
+  meta: {
+    showTabbar: false
+  },
   component: Login
 }, {
   path: '/home',
   name: 'home',
+  meta: {
+    title: '主页'
+  },
   component: Home
 },
 {
   path: '/account',
   name: 'account',
+  meta: {
+    title: '我'
+  },
   component: Account
 },
 {
   path: '/customer',
   name: 'customer',
+  meta: {
+    title: '客户'
+  },
   component: Customer
 }]
 

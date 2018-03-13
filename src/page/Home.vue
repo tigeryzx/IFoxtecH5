@@ -1,6 +1,5 @@
 <template>
     <div>
-        <x-header :left-options="{showBack: false}">所有功能</x-header>
         <group-title>这是一段描述信息</group-title>
         <grid :cols="3">
             <grid-item label="功能">
