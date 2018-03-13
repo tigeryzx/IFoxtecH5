@@ -5,26 +5,36 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import store from './store'
 import App from './App'
+
 import Login from './page/Login'
 import Home from './page/Home'
 import Account from './page/Account'
+import Customer from './page/Customer'
+
 import * as types from './store/types'
+import { ToastPlugin } from 'vux'
 
 Vue.use(VueRouter)
+Vue.use(ToastPlugin, { position: 'bottom' })
 
 const routes = [{
   path: '/',
-  namge:'login',
+  namge: 'login',
   component: Login
-},{
-  path:'/home',
+}, {
+  path: '/home',
   name: 'home',
-  component:Home
+  component: Home
 },
 {
-  path:'/account',
+  path: '/account',
   name: 'account',
-  component:Account
+  component: Account
+},
+{
+  path: '/customer',
+  name: 'customer',
+  component: Customer
 }]
 
 const router = new VueRouter({
@@ -36,12 +46,12 @@ FastClick.attach(document.body)
 Vue.config.productionTip = false
 
 router.beforeEach(function (to, from, next) {
-  store.commit(types.M_UPDATE_LOADING_STATUS, {isLoading: true})
+  store.commit(types.M_UPDATE_LOADING_STATUS, { isLoading: true })
   next()
 })
 
 router.afterEach(function (to) {
-  store.commit(types.M_UPDATE_LOADING_STATUS, {isLoading: false})
+  store.commit(types.M_UPDATE_LOADING_STATUS, { isLoading: false })
 })
 
 

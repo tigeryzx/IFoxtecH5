@@ -6,15 +6,15 @@
         </group>
         <group>
             <cell title="功能1" is-link>
-                <x-icon style="display:block;margin-right:5px;color:red;" slot="icon" type="ios-heart" size="20"></x-icon>
+                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="ios-heart" size="20"></x-icon>
             </cell>
         </group>
         <group>
             <cell title="功能2" is-link>
-                <x-icon style="display:block;margin-right:5px;color:blue;" slot="icon" type="ios-plus-outline" size="20"></x-icon>
+                <x-icon style="display:block;margin-right:5px;fill:blue;" slot="icon" type="ios-cart" size="20"></x-icon>
             </cell>
             <cell title="功能3" is-link>
-                <x-icon style="display:block;margin-right:5px;color:yellow;" slot="icon" type="ios-star" size="20"></x-icon>
+                <x-icon style="display:block;margin-right:5px;fill:yellow;" slot="icon" type="ios-star" size="20"></x-icon>
             </cell>
         </group>
         <main-tabbar>
@@ -35,4 +35,5 @@
     }
 </script>
 <style>
+
 </style>

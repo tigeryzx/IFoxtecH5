@@ -40,12 +40,5 @@
     }
 </script>
 <style>
-    .vux-x-icon {
-        fill: rgb(130, 185, 78);
-    }
 
-    .cell-x-icon {
-        display: block;
-        fill: green;
-    }
 </style>
