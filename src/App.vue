@@ -5,7 +5,7 @@
     <!-- main content -->
     <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
       <x-header slot="header" v-show="title!=null" :title="title" style="width:100%;position:absolute;left:0;top:0;z-index:100;"
-        :left-options="{showBack: false}"></x-header>
+        :left-options="{showBack: canBack}"></x-header>
       <router-view class="router-view"></router-view>
       <main-tabbar slot="bottom" v-show="showTabbar"></main-tabbar>
     </view-box>
@@ -38,6 +38,11 @@
       showTabbar() {
         if (this.$route.meta)
           return this.$route.meta.showTabbar != undefined ? this.$route.meta.showTabbar : true;
+        return true;
+      },
+      canBack(){
+        if (this.$route.meta)
+          return this.$route.meta.canBack != undefined ? this.$route.meta.canBack : false;
         return true;
       }
     }

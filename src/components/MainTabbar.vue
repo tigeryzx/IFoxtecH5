@@ -10,12 +10,12 @@
             <x-icon slot="icon-active" type="ios-list" size="30"></x-icon>
             <span slot="label">客户</span>
         </tabbar-item>
-        <tabbar-item>
-            <x-icon slot="icon" type="ios-albums-outline" size="30"></x-icon>
-            <x-icon slot="icon-active" type="ios-albums" size="30"></x-icon>
-            <span slot="label">发现</span>
+        <tabbar-item badge="2" link="/notify">
+            <x-icon slot="icon" type="android-notifications-none" size="30"></x-icon>
+            <x-icon slot="icon-active" type="android-notifications" size="30"></x-icon>
+            <span slot="label">消息</span>
         </tabbar-item>
-        <tabbar-item badge="2" link="/account">
+        <tabbar-item link="/account">
             <x-icon slot="icon" type="ios-person-outline" size="30"></x-icon>
             <x-icon slot="icon-active" type="ios-person" size="30"></x-icon>
             <span slot="label">我</span>

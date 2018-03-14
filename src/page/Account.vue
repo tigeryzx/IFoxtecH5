@@ -18,7 +18,7 @@
         </group>
         <group>
             <cell title="退出登录" link="/">
-                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="ios-heart" size="20"></x-icon>
+                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="arrow-right-a" size="20"></x-icon>
             </cell>
         </group>
         <main-tabbar>

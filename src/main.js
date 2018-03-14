@@ -6,48 +6,14 @@ import VueRouter from 'vue-router'
 import store from './store'
 import App from './App'
 
-import Login from './page/Login'
-import Home from './page/Home'
-import Account from './page/Account'
-import Customer from './page/Customer'
+import routes from './router'
 
 import * as types from './store/types'
-import { ToastPlugin } from 'vux'
+import { ToastPlugin, AlertPlugin } from 'vux'
 
 Vue.use(VueRouter)
-Vue.use(ToastPlugin, { position: 'bottom' })
-
-const routes = [{
-  path: '/',
-  namge: 'login',
-  meta: {
-    showTabbar: false
-  },
-  component: Login
-}, {
-  path: '/home',
-  name: 'home',
-  meta: {
-    title: '主页'
-  },
-  component: Home
-},
-{
-  path: '/account',
-  name: 'account',
-  meta: {
-    title: '我'
-  },
-  component: Account
-},
-{
-  path: '/customer',
-  name: 'customer',
-  meta: {
-    title: '客户'
-  },
-  component: Customer
-}]
+Vue.use(ToastPlugin, { position: 'top' });
+Vue.use(AlertPlugin);
 
 const router = new VueRouter({
   routes

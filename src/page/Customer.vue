@@ -4,7 +4,7 @@
             top="46px" @on-focus="onFocus" @on-cancel="onCancel" @on-submit="onSubmit" ref="search"></search>
 
         <group v-for="cg in customerGroups" :key="cg.id" :title="cg.name">
-            <cell v-for="customer in cg.customers" :key="customer.id" :title="customer.name" :inline-desc="customer.contact +' '+ customer.phone"></cell>
+            <cell v-for="customer in cg.customers" :key="customer.id" :title="customer.name" link="/customerInfo" :inline-desc="customer.contact +' '+ customer.phone"></cell>
         </group>
 
     </div>
@@ -37,7 +37,17 @@
         },
         methods: {
             resultClick(item) {
-                window.alert('you click the result item: ' + JSON.stringify(item))
+                // 显示
+                this.$vux.alert.show({
+                    title: '提示',
+                    content: '你选中值' + JSON.stringify(item),
+                    onShow() {
+                        console.log('Plugin: I\'m showing')
+                    },
+                    onHide() {
+                        console.log('Plugin: I\'m hiding')
+                    }
+                });
             },
             getResult(val) {
                 console.log('on-change', val)
