@@ -9,11 +9,12 @@ import App from './App'
 import routes from './router'
 
 import * as types from './store/types'
-import { ToastPlugin, AlertPlugin } from 'vux'
+import { ToastPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
 
 Vue.use(VueRouter)
 Vue.use(ToastPlugin, { position: 'top' });
 Vue.use(AlertPlugin);
+Vue.use(ConfirmPlugin);
 
 const router = new VueRouter({
   routes

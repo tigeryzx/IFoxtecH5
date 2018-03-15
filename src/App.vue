@@ -53,6 +53,7 @@
   @import '~vux/src/styles/reset.less';
   @import '~vux/src/styles/1px.less';
   @import '~vux/src/styles/tap.less';
+  @import './styles/main.less';
 
   body {
     background-color: #fbf9fe;

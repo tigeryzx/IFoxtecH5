@@ -30,7 +30,8 @@
         methods: {
             login(){
                 console.log(this.username + "||" + this.password);
-                this.$router.push('/home');
+                if(this.username && this.password)
+                    this.$router.push('/home');
             }
         }
     }

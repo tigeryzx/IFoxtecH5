@@ -1,24 +1,25 @@
 <template>
     <div>
-        <group-title>这是一段描述信息</group-title>
+        <group-title>客户管理</group-title>
         <grid :cols="3">
-            <grid-item label="功能">
+            <grid-item label="申领审批" link="/customerApply">
+                <x-icon slot="icon" type="checkmark-circled" size="35"></x-icon>
+            </grid-item>
+
+            <grid-item label="共享客户" link="/customer/share">
+                <x-icon slot="icon" type="person-stalker" size="35"></x-icon>
+            </grid-item>
+            <grid-item label="所有客户" link="/customer/all">
+                <x-icon slot="icon" type="ios-people" size="35"></x-icon>
+            </grid-item>
+            <grid-item label="功能占位">
                 <x-icon slot="icon" type="ios-search-strong" size="35"></x-icon>
             </grid-item>
-            <grid-item label="功能">
-                <x-icon slot="icon" type="ios-help" size="35"></x-icon>
-            </grid-item>
-            <grid-item label="功能">
+            <grid-item label="功能占位">
                 <x-icon slot="icon" type="ios-heart" size="35"></x-icon>
             </grid-item>
-            <grid-item label="功能">
-                <x-icon slot="icon" type="ios-heart" size="35"></x-icon>
-            </grid-item>
-            <grid-item label="功能">
+            <grid-item label="功能占位">
                 <x-icon slot="icon" type="ios-help" size="35"></x-icon>
-            </grid-item>
-            <grid-item label="功能">
-                <x-icon slot="icon" type="ios-search-strong" size="35"></x-icon>
             </grid-item>
         </grid>
 
@@ -39,5 +40,4 @@
     }
 </script>
 <style>
-
 </style>

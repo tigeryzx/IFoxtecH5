@@ -4,21 +4,21 @@
             <cell title="黄小明" inline-desc="账号名：hxm"></cell>
         </group>
         <group>
-            <cell title="功能1" is-link>
-                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="ios-heart" size="20"></x-icon>
+            <cell title="功能菜单1" is-link>
+                <x-icon class="fox-cell-icon" slot="icon" type="ios-heart"></x-icon>
             </cell>
         </group>
         <group>
-            <cell title="功能2" is-link>
-                <x-icon style="display:block;margin-right:5px;fill:blue;" slot="icon" type="ios-cart" size="20"></x-icon>
+            <cell title="功能菜单2" is-link>
+                <x-icon class="fox-cell-icon" slot="icon" type="ios-cart"></x-icon>
             </cell>
-            <cell title="功能3" is-link>
-                <x-icon style="display:block;margin-right:5px;fill:yellow;" slot="icon" type="ios-star" size="20"></x-icon>
+            <cell title="功能菜单3" is-link>
+                <x-icon class="fox-cell-icon" slot="icon" type="ios-star"></x-icon>
             </cell>
         </group>
         <group>
             <cell title="退出登录" link="/">
-                <x-icon style="display:block;margin-right:5px;fill:red;" slot="icon" type="arrow-right-a" size="20"></x-icon>
+                <x-icon class="fox-cell-icon" slot="icon" type="arrow-right-a"></x-icon>
             </cell>
         </group>
         <main-tabbar>
@@ -37,6 +37,3 @@
         }
     }
 </script>
-<style>
-
-</style>

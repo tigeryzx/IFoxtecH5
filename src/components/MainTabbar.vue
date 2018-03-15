@@ -1,6 +1,6 @@
 <template>
     <tabbar style="position:fixed;">
-        <tabbar-item link="/home">
+        <tabbar-item selected link="/home">
             <x-icon slot="icon" type="ios-home-outline" size="30"></x-icon>
             <x-icon slot="icon-active" type="ios-home" size="30"></x-icon>
             <span slot="label">主页</span>
