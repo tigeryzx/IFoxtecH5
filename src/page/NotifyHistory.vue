@@ -1,38 +1,23 @@
 <template>
     <div>
-        <scroller height="-46" :pulldown-config="pulldownConfig" :pullup-config="pullupConfig" lock-x scrollbar-y use-pulldown use-pullup
-            @on-pulldown-loading="refresh" @on-pullup-loading="loadMore" ref="scroller">
+        <scroller-datalist @on-pulldown-loading="refresh" @on-pullup-loading="loadMore" ref="datalist">
             <div>
                 <panel v-for="group in groups" :key="group.id" :header="group.name" :list="group.list" :type="type"></panel>
-                <divider v-show="isNoMore">已经没有啦!</divider>
             </div>
-        </scroller>
+        </scroller-datalist>
     </div>
 </template>
 <script>
-    import { Panel, Scroller, Divider } from 'vux'
+    import { Panel } from 'vux'
+    import ScrollerDatalist from '../components/ScrollerDatalist'
     export default {
         components: {
             Panel,
-            Scroller,
-            Divider
+            ScrollerDatalist
         },
         data() {
             return {
                 type: "4",
-                pullupConfig: {
-                    content: '上拉加载更多',
-                    downContent: '释放后加载',
-                    upContent: '上拉加载更多',
-                    loadingContent: '加载中...'
-                },
-                pulldownConfig: {
-                    content: '下拉刷新',
-                    downContent: '下拉刷新',
-                    upContent: '释放后刷新',
-                    loadingContent: '刷新中...',
-                },
-                isNoMore: false,
                 maxLoadTime: 3,
                 loadTime: 0,
                 groups: []
@@ -44,26 +29,12 @@
         },
         methods: {
             refresh() {
-                setTimeout(() => {
-                    this.loadTime = 0;
-                    this.groups.splice(0, this.groups.length);
-                    this.setGroupsData();
-                    this.$nextTick(() => {
-                        setTimeout(() => {
-                            this.$refs.scroller.donePulldown();
-                            this.$refs.scroller.enablePullup();
-                            this.isNoMore = false;
-                        }, 10)
-                    })
-                }, 2000)
+                this.loadTime = 0;
+                this.groups.splice(0, this.groups.length);
+                this.setGroupsData();
             },
             loadMore() {
-                setTimeout(() => {
-                    this.fillGroupsData(this.groups[1]);
-                    setTimeout(() => {
-                        this.$refs.scroller.donePullup()
-                    }, 10)
-                }, 2000)
+                this.fillGroupsData(this.groups[1]);
             },
             setGroupsData() {
                 var groups = [];
@@ -90,8 +61,7 @@
 
                 if (this.loadTime >= this.maxLoadTime) {
                     // 没有更多数据时禁用拉上刷新
-                    this.$refs.scroller.disablePullup();
-                    this.isNoMore = true;
+                    this.$refs.datalist.setNoMoreState(true);
                     return;
                 }
 

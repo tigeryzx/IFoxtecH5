@@ -16,7 +16,13 @@
         props: {
             height: {
                 type: String,
-                default: '-46'
+                default: function () {
+                    var result = "-46";
+                    if (this.$route.meta && ( this.$route.meta.showTabbar === undefined || this.$route.meta.showTabbar === true)){
+                        result = "-150";
+                    }
+                    return result;
+                }
             }
         },
         components: {
@@ -40,6 +46,7 @@
                 isNoMore: false
             }
         },
+      
         methods: {
             refresh() {
                 setTimeout(() => {

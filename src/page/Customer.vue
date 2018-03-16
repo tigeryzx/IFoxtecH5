@@ -3,7 +3,7 @@
         <search @result-click="resultClick" @on-change="getResult" :results="results" v-model="value" position="absolute" auto-scroll-to-top
             top="46px" @on-focus="onFocus" @on-cancel="onCancel" @on-submit="onSubmit" ref="search"></search>
 
-        <scroller-datalist height="-150" @on-pulldown-loading="refresh" @on-pullup-loading="loadMore" ref="datalist">
+        <scroller-datalist :height="height" @on-pulldown-loading="refresh" @on-pullup-loading="loadMore" ref="datalist">
             <div>
                 <group v-for="cg in customerGroups" :key="cg.id" :title="cg.name">
                     <cell v-for="customer in cg.customers" :key="customer.id" :title="customer.name" link="/customerInfo" :inline-desc="customer.contact +' '+ customer.phone"></cell>
@@ -13,7 +13,7 @@
     </div>
 </template>
 <script>
-    import { Search, XHeader, Group, Cell } from 'vux'
+    import { Search, Group, Cell } from 'vux'
     import ScrollerDatalist from '../components/ScrollerDatalist'
 
     export default {
@@ -23,13 +23,20 @@
             Cell,
             ScrollerDatalist
         },
+        created() {
+            if (this.$route.path == "/customer")
+                this.height = "-150";
+            else
+                this.height = "-100";
+        },
         data() {
             return {
                 results: [],
                 value: 'test',
                 customerGroups: [],
                 maxLoadTime: 3,
-                loadTime: 0
+                loadTime: 0,
+                height: "-150"
             }
         },
         beforeRouteEnter(to, from, next) {

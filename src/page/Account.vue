@@ -26,13 +26,12 @@
     </div>
 </template>
 <script>
-    import { Group, Cell, XHeader } from 'vux'
+    import { Group, Cell } from 'vux'
     import MainTabbar from '../components/MainTabbar'
     export default {
         components: {
             Group,
             Cell,
-            XHeader,
             MainTabbar
         }
     }
