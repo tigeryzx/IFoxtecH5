@@ -15,6 +15,7 @@
 <script>
     import { Search, Group, Cell } from 'vux'
     import ScrollerDatalist from '../components/ScrollerDatalist'
+    import api from '../api'
 
     export default {
         components: {
@@ -41,14 +42,18 @@
         },
         beforeRouteEnter(to, from, next) {
             console.log("beforeRouteEnter");
-            next(vm => vm.setCustomerGroupData());
+            api.getCustomer().then(res => {
+                next(vm => {
+                    vm.setCustomerGroupData(res.data.result);
+                });
+            });
         },
         // 路由改变前，组件就已经渲染完了
         // 逻辑稍稍不同
-        beforeRouteUpdate(to, from, next) {
-            console.log("beforeRouteUpdate");
-            next(vm => vm.setCustomerGroupData());
-        },
+        // beforeRouteUpdate(to, from, next) {
+        //     console.log("beforeRouteUpdate");
+        //     next(vm => vm.setCustomerGroupData());
+        // },
         methods: {
             refresh() {
                 this.loadTime = 0;
@@ -88,9 +93,8 @@
             onCancel() {
                 console.log('on cancel')
             },
-            setCustomerGroupData() {
-                console.log("getData");
-                this.fillCustomerGroupData(this.customerGroups);
+            setCustomerGroupData(data) {
+                this.customerGroups = data;
             },
             fillCustomerGroupData(customerGroups) {
 
@@ -100,17 +104,13 @@
                     return;
                 }
 
-                var startIndex = customerGroups.length;
-                var endIndex = customerGroups.length + 3;
-                for (var i = startIndex; i < endIndex; i++) {
-                    var customerGroup = { name: '组别' + i, customers: [] };
-                    for (var y = 1; y < 3; y++) {
-                        customerGroup.customers.push({ name: '客户名称' + y, phone: '13528542568', contact: '联系人' + y });
+                api.getCustomer().then(res => {
+                    var data = res.data.result;
+                    for (var i = 0; i < data.length; i++) {
+                        customerGroups.push(data[i]);
                     }
-                    customerGroups.push(customerGroup);
-                }
-
-                this.loadTime++;
+                    this.loadTime++;
+                });
             }
         }
     }
