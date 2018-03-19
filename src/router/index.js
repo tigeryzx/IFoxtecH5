@@ -7,6 +7,7 @@ import CustomerApply from '../page/CustomerApply'
 import ContactsInfo from '../page/ContactsInfo'
 import Notify from '../page/Notify'
 import NotifyHistory from '../page/NotifyHistory'
+import CustomerMap from '../page/CustomerMap'
 
 
 const routes = [{
@@ -46,6 +47,15 @@ const routes = [{
     showTabbar: false
   },
   component: Customer
+},{
+  path: '/customerMap',
+  name: 'customerMap',
+  meta: {
+    title: '附近客户',
+    canBack: true,
+    showTabbar: false
+  },
+  component: CustomerMap
 },{
   path: '/customer/share',
   name: 'shareCustomer',

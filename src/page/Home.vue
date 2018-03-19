@@ -12,11 +12,11 @@
             <grid-item label="所有客户" link="/customer/all">
                 <x-icon slot="icon" type="ios-people" size="35"></x-icon>
             </grid-item>
-            <grid-item label="功能占位">
-                <x-icon slot="icon" type="ios-search-strong" size="35"></x-icon>
+            <grid-item label="附近客户" link="/customerMap">
+                <x-icon slot="icon" type="map" size="35"></x-icon>
             </grid-item>
-            <grid-item label="功能占位">
-                <x-icon slot="icon" type="ios-heart" size="35"></x-icon>
+            <grid-item label="跟进任务">
+                <x-icon slot="icon" type="android-alarm-clock" size="35"></x-icon>
             </grid-item>
             <grid-item label="功能占位">
                 <x-icon slot="icon" type="ios-help" size="35"></x-icon>
