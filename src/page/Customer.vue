@@ -33,7 +33,7 @@
         data() {
             return {
                 results: [],
-                value: 'test',
+                value: '',
                 customerGroups: [],
                 maxLoadTime: 3,
                 loadTime: 0,

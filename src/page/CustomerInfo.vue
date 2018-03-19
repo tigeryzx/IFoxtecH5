@@ -72,6 +72,8 @@
 </template>
 <script>
     import { Group, Cell, Tab, TabItem, Card, Sticky } from 'vux'
+    import api from '../api'
+
     export default {
         components: {
             Group,
@@ -91,28 +93,19 @@
         },
         beforeRouteEnter(to, from, next) {
             console.log("beforeRouteEnter");
-            next(vm => vm.setContactData());
+            api.getContacts().then(res => {
+                next(vm => {
+                    vm.setContactData(res.data.result);
+                });
+            });
         },
         methods: {
             onItemClick(index) {
                 console.log('on item click:', index);
                 this.index = index;
             },
-            setContactData() {
-                var contacts = [];
-                for (var i = 0; i < 5; i++) {
-                    contacts.push({
-                        contactName: '张长云' + i,
-                        position: '主管' + i,
-                        mobile: '13528541258',
-                        telephone: '0760-88521458'
-                    });
-                }
-                this.contacts = contacts;
-            },
-            callPhone(phone) {
-                console.log("call.." + phone);
-                window.location.href = 'tel://' + phone;
+            setContactData(data) {
+                this.contacts = data;
             }
         }
     }
