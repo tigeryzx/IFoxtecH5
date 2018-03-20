@@ -9,15 +9,17 @@ if (!(typeof window !== 'undefined' && window.Vue)) {
 }
 
 const state = {
-
+    direction: 'forward'
 }
-  
+
 const getters = {
 
 }
-  
-const mutations = {
 
+const mutations = {
+    updateDirection(state, payload) {
+        state.direction = payload.direction
+    }
 }
 
 export default new Vuex.Store({
@@ -27,4 +29,4 @@ export default new Vuex.Store({
     modules: {
         loading
     }
-  })
+})

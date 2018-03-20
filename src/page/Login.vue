@@ -12,12 +12,12 @@
             <x-button type="primary" @click.native="login" action-type="button">登录</x-button>
         </box>
         <div class="footer">
-            ©2017-2018 Fox, Inc. All rights reserved. 
+            ©2017-2018 Fox, Inc. All rights reserved.
         </div>
     </div>
 </template>
 <script>
-    import { Group, XInput, XButton, Box } from 'vux'
+    import { Group, XInput, XButton, Box, cookie } from 'vux'
     export default {
         components: {
             Group,
@@ -31,11 +31,30 @@
                 password: ''
             }
         },
+        mounted: function () {
+            this.$nextTick(function () {
+                // 检查登录信息自动登录
+                var username = cookie.get('userName');
+                if (username != null) {
+                    this.$vux.loading.show({
+                        text: '自动登录'
+                    });
+                    setTimeout(() => {
+                        this.$router.push('/home');
+                        this.$vux.loading.hide();
+                    }, 2000);
+                }
+            })
+        },
         methods: {
             login() {
                 console.log(this.username + "||" + this.password);
-                if (this.username && this.password)
+                if (this.username && this.password) {
+                    cookie.set('userName', this.username, {
+                        expires: 1
+                    });
                     this.$router.push('/home');
+                }
             }
         }
     }
@@ -59,14 +78,15 @@
         z-index: -100;
         background-image: url('../assets/loginbg_370x667.jpg');
         background-size: 100% 100%;
-        -moz-background-size:100% 100%;
+        -moz-background-size: 100% 100%;
         background-attachment: fixed;
     }
 
-    .inputbg{
+    .inputbg {
         opacity: 0.7;
     }
-    .footer{
+
+    .footer {
         font-size: 12px;
         position: absolute;
         left: 0;

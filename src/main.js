@@ -10,18 +10,14 @@ import routes from './router'
 
 import * as types from './store/types'
 import Mock from './api/mock'
-// import BaiduMap from 'vue-baidu-map'
 
-import { ToastPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
+import { ToastPlugin, AlertPlugin, ConfirmPlugin, LoadingPlugin } from 'vux'
 
-// Vue.use(BaiduMap, {
-//   /* Visit http://lbsyun.baidu.com/apiconsole/key for details about app key. */
-//   ak: 'VMVSnEiWRf76Nmi2uKE8YcSw'
-// });
 Vue.use(VueRouter);
 Vue.use(ToastPlugin, { position: 'top' });
 Vue.use(AlertPlugin);
 Vue.use(ConfirmPlugin);
+Vue.use(LoadingPlugin);
 
 
 

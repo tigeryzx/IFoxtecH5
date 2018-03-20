@@ -4,9 +4,12 @@
 
     <!-- main content -->
     <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
-      <x-header slot="header" v-show="title!=null" :title="title" style="width:100%;position:absolute;left:0;top:0;z-index:100;"
+      <x-header :transition="headerTransition" slot="header" v-show="title!=null" :title="title" style="width:100%;position:absolute;left:0;top:0;z-index:100;"
         :left-options="{showBack: canBack}"></x-header>
+      <!-- remember to import BusPlugin in main.js if you use components: x-img and sticky -->
+      <transition @after-enter="$vux.bus && $vux.bus.$emit('vux:after-view-enter')" :name="viewTransition" :css="!!direction">
         <router-view class="router-view"></router-view>
+      </transition>
       <main-tabbar slot="bottom" v-show="showTabbar"></main-tabbar>
     </view-box>
 
@@ -28,8 +31,13 @@
     },
     computed: {
       ...mapState({
-        isLoading: state => state.loading.isLoading
+        isLoading: state => state.loading.isLoading,
+        direction: state => state.direction
       }),
+      headerTransition() {
+        if (!this.direction) return ''
+        return this.direction === 'forward' ? 'vux-header-fade-in-right' : 'vux-header-fade-in-left';
+      },
       title() {
         if (this.$route.meta && this.$route.meta.title)
           return this.$route.meta.title;
@@ -44,6 +52,13 @@
         if (this.$route.meta)
           return this.$route.meta.canBack != undefined ? this.$route.meta.canBack : false;
         return true;
+      },
+      viewTransition() {
+        console.log(this.direction);
+
+        if (!this.direction)
+          return ''
+        return 'vux-pop-' + (this.direction === 'forward' ? 'in' : 'out')
       }
     }
   }
@@ -69,5 +84,42 @@
   .router-view {
     width: 100%;
     top: 46px;
+  }
+
+  .vux-pop-out-enter-active,
+  .vux-pop-out-leave-active,
+  .vux-pop-in-enter-active,
+  .vux-pop-in-leave-active {
+    will-change: transform;
+    transition: all 500ms;
+    height: 100%;
+    top: 46px;
+    position: absolute;
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+
+  .vux-pop-out-enter {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .vux-pop-out-leave-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  .vux-pop-in-enter {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  .vux-pop-in-leave-active {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .menu-title {
+    color: #888;
   }
 </style>
